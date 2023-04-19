@@ -31,10 +31,13 @@ def find_text(input_dir, forbidden_words):
                 # Obtindre el número de frame de l'arxiu d'imatge a partir del nom del fitxer de text
                 frame_number = int(file.replace("frame_", "").replace(".txt", ""))
 
+                local_dets = []
                 # Comprovar si hi ha alguna de les paraules prohibides
                 for word in forbidden_words:
                     if word in text.lower():
-                        detections.append({"frame":frame_number, "word":word})
-                        break
+                        local_dets.append(word)
+                
+                if(len(local_dets) > 0):
+                    detections.append({"frame":frame_number, "words":  ", ".join(local_dets)})
 
     return {"detections": detections, "frame_sampling_rate": frame_sampling_rate, "origin": metadata.split("\n")[0].split(":")[1].strip()}

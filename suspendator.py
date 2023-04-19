@@ -53,13 +53,13 @@ for video in videos:
             print(f"Processant {video_path}")
             ocr.to_ocr(video_path, output_dir, ffmpeg_path, tesseract_path, args.sampling_rate)
 
-    results.append(ft.find_text(output_dir, forbidden_words))
+        results.append(ft.find_text(output_dir, forbidden_words))
 
 for res in results:
     frame_sampling_rate = res["frame_sampling_rate"]
     video = res["origin"]
 
-    print(f"Results on {video}")
+    print(f"{'No r' if len(res['detections'])==0 else 'R'}esults on {video}")
 
     for det in res["detections"]:
 
@@ -73,7 +73,7 @@ for res in results:
         minutes = (timestamp_seconds % 3600) // 60
         seconds = timestamp_seconds % 60
 
-        text = f"Frame {frame}: {hours:02d}:{minutes:02d}:{seconds:02d} - {det['word']}"
+        text = f"\tFrame {frame}: {hours:02d}:{minutes:02d}:{seconds:02d} - {det['words']}"
 
         print(text)
 
