@@ -8,7 +8,7 @@ També caldrà descarregar i instal·lar la llibrereia d'OCR [tesseract](https:/
 
 Comandes disponibles:
 ```cmd
-python main.py --help
+python suspendator.py --help
 
 positional arguments:
   input_dir             Carpeta on es troben els vídeos
@@ -26,12 +26,12 @@ options:
 
 Exemple per processar una carpeta de vídeos tot agafant el frame cada 30s i filtrar per les paraules "chat", "google" i "boscdelacoma.cat":
 ```cmd
-python main.py carpeta/amb/videos/alumnes -r30 -f chat,google,boscdelacoma.cat
+python suspendator.py carpeta/amb/videos/alumnes -r30 -f chat,google,boscdelacoma.cat
 ```
 
 Fer-ho de nou evitant recalcular l'OCR, (només volem canviar el filtre).
 ```cmd
-python main.py carpeta/amb/videos/alumnes --skip -f patata
+python suspendator.py carpeta/amb/videos/alumnes --skip -f patata
 ```
 
 
