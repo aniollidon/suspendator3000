@@ -4,7 +4,7 @@ import os
 import argparse
 
 # Definir els paràmetres de configuració per defecte
-ffmpeg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ffmpeg\\ffmpeg.exe")
+ffmpeg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ext\\ffmpeg.exe")
 tesseract_path = f"C:\\Users\\user\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe"
 
 # Crear el parser d'arguments
@@ -52,7 +52,7 @@ for video in videos:
         if(not args.skip):
             print(f"Processant {video_path}")
             ocr.to_ocr(video_path, output_dir, ffmpeg_path, tesseract_path, args.sampling_rate)
-            
+
     results.append(ft.find_text(output_dir, forbidden_words))
 
 for res in results:
